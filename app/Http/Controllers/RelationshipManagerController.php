@@ -2,64 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RelationshipManager;
 use Illuminate\Http\Request;
+use App\Models\RelationshipManager;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RelationshipManagerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function showLoginForm()
     {
-        //
+        if (Auth::guard('relationshipManager')->check()) {
+            return redirect()->route('relationship-manager.profile');
+        } else {
+            return view('manager.auth.login');
+        }
+    }
+    public function showRegisterForm()
+    {
+        if (Auth::guard('relationshipManager')->check()) {
+            return redirect()->route('relationship-manager.profile');
+        } else {
+            return view('manager.auth.register');
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function register(Request $request)
     {
-        //
+        $manager = new RelationshipManager;
+        $manager->manager_name = $request->input('name');
+        $manager->email = $request->input('email');
+        $manager->password = Hash::make($request->input('password'));
+        $manager->save();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function Login(Request $request)
     {
-        //
+        $check = $request->all();
+        if (Auth::guard('relationshipManager')->attempt(['email' => $check['email'], 'password' => $check['password']])) {
+            return redirect()->route('relationship-manager.profile');
+        } else {
+            return back()->with('error', 'Invalid Credentials');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(RelationshipManager $relationshipManager)
+    public function managerLogout(Request $request)
     {
-        //
+        Auth::guard('relationshipManager')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return to_route('relationship-manager.login');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(RelationshipManager $relationshipManager)
+    public function show()
     {
-        //
+        return view('manager.profile');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, RelationshipManager $relationshipManager)
+    public function showAllRelationshipManagers()
     {
-        //
+        $managers = RelationshipManager::latest()->get();
+        return view('', compact('managers'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(RelationshipManager $relationshipManager)
+    public function showManagerProfile($id)
     {
-        //
+        $manager = RelationshipManager::findOrFail($id);
+        return view('', compact('manager'));
     }
 }

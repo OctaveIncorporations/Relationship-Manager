@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'relationshipManager' => [
+            'driver' => 'session',
+            'provider' => 'relationship-managers',
+        ]
     ],
 
     /*
@@ -64,6 +69,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        'relationship-managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\RelationshipManager::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,6 +106,12 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'relationship-managers' => [
+            'provider' => 'relationship-managers',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

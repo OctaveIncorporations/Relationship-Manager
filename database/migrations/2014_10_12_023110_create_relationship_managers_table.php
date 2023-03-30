@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('relationship_managers', function (Blueprint $table) {
             $table->id();
             $table->string('manager_name', 50);
-            $table->string('password', 100);
             $table->string('email', 50);
+            $table->string('password', 100);
             $table->text('biography')->nullable();
             $table->string('photo_url', 50)->nullable();
             $table->string('phone_number', 20)->nullable();
