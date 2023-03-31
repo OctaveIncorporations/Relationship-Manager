@@ -34,6 +34,8 @@ class RelationshipManagerController extends Controller
         $manager->email = $request->input('email');
         $manager->password = Hash::make($request->input('password'));
         $manager->save();
+        
+        return to_route('relationship-manager.sign-in');
     }
 
     public function Login(Request $request)
@@ -62,12 +64,12 @@ class RelationshipManagerController extends Controller
     public function showAllRelationshipManagers()
     {
         $managers = RelationshipManager::latest()->get();
-        return view('', compact('managers'));
+        return view('client.managers', compact('managers'));
     }
 
     public function showManagerProfile($id)
     {
         $manager = RelationshipManager::findOrFail($id);
-        return view('', compact('manager'));
+        return view('client.manager-profile', compact('manager'));
     }
 }

@@ -58,6 +58,10 @@ class ClientController extends Controller
     public function update(Request $request, string $id)
     {
         $client = User::findOrFail($id);
+        $client->first_name = $request->input('first_name');
+        $client->last_name = $request->input('last_name');
+        $client->username = $request->input('username');
+        $client->phone_number = $request->input('phone_number');
         $client->update();
         return to_route('client.profile');
     }

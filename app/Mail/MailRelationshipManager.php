@@ -15,14 +15,15 @@ class MailRelationshipManager extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
+    public $manager, $request;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct($manager, $request)
     {
-        $this->mailData = $mailData;
+        $this->manager = $manager;
+        $this->request = $request;
     }
 
     /**
@@ -32,7 +33,7 @@ class MailRelationshipManager extends Mailable
     {
         return new Envelope(
             from: new Address(Auth::User()->email, Auth::User()->full_name),
-            subject: $this->mailData['subject'],
+            subject: $this->request->subject,
         );
     }
 
@@ -44,7 +45,8 @@ class MailRelationshipManager extends Mailable
         return new Content(
             markdown: 'mail.mail-relationship-manager',
             with: [
-                'messageBody' => $this->mailData['body'],
+                'messageBody' => $this->request->body,
+                'managerName' => $this->manager->manager_name,
             ],
         );
     }

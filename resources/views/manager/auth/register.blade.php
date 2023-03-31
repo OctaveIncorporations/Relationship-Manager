@@ -45,7 +45,7 @@
           <label for="lastname">
             <span class="v85_35">Name</span>
             <div>
-              <input type="text" class="v85_36" placeholder="Rasheed" id="name" name="name" required />
+              <input type="text" class="v85_36" placeholder="Name" id="name" name="name" required style="font-size: 24px;"/>
             </div>
           </label>
         </div>
@@ -53,7 +53,7 @@
           <label for="email">
             <span class="v90_41">Email Address</span>
             <div>
-              <input type="text" class="v90_42" placeholder="example@gmail.com" id="email" name="email" required />
+              <input type="text" class="v90_42" placeholder="Enter Email Address" id="email" name="email" required style="font-size: 24px;"/>
             </div>
           </label>
         </div>
@@ -61,7 +61,7 @@
           <label for="password">
             <span class="v90_45">Password</span>
             <div>
-              <input type="password" class="v90_46" name="password" id="password" required />
+              <input type="password" class="v90_46" name="password" id="password" required style="font-size: 24px;"/>
             </div>
           </label>
         </div>

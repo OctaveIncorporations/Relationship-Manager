@@ -64,7 +64,8 @@
                   class="v91_160"
                   name="email"
                   id="email"
-                  placeholder="example@gmail.com"
+                  placeholder="Enter Email Address"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -79,6 +80,7 @@
                   class="v91_163"
                   name="password"
                   id="password"
+                  style="font-size: 24px;"
                   required
                 />
               </div>

@@ -56,7 +56,8 @@
                   class="v85_34"
                   id="first_name"
                   name="first_name"
-                  placeholder="Damilola"
+                  placeholder="Enter First Name"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -69,9 +70,10 @@
                 <input
                   type="text"
                   class="v85_36"
-                  placeholder="Rasheed"
+                  placeholder="Enter Last Name"
                   id="last_name"
                   name="last_name"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -84,9 +86,10 @@
                 <input
                   type="text"
                   class="v90_42"
-                  placeholder="example@gmail.com"
+                  placeholder="Enter Email Address"
                   id="email"
                   name="email"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -101,6 +104,7 @@
                   class="v90_46"
                   name="password"
                   id="password"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -115,6 +119,7 @@
                   class="v202_8"
                   name="password_confirmation"
                   id="password_confirmation"
+                  style="font-size: 24px;"
                   required
                 />
               </div>

@@ -37,12 +37,8 @@
       <div class="e3_242"></div>
       <span class="e2_179">Name</span>
       <span class="e3_199">{{Auth::guard('relationshipManager')->user()->manager_name}}</span>
-      <span class="e3_200">32years</span>
-      <span class="e3_201">Software Developer</span>
-      <span class="e3_202">Introvert</span>
-      <span class="e3_190">Age</span>
-      <span class="e3_191">Occupation</span>
-      <span class="e3_192">Personality</span>
+      <span class="e3_200">{{Auth::guard('relationshipManager')->user()->email}}</span>
+      <span class="e3_190">Email</span>
       <div class="e5_267">
         <div class="e5_268"></div>
         <div class="e5_269"></div>

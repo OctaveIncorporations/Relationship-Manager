@@ -65,6 +65,7 @@
                   name="email"
                   id="email"
                   placeholder="example@gmail.com"
+                  style="font-size: 24px;"
                   required
                 />
               </div>
@@ -79,6 +80,7 @@
                   class="v91_163"
                   name="password"
                   id="password"
+                  style="font-size: 24px;"
                   required
                 />
               </div>

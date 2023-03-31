@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RelationshipManagerController;
 
@@ -31,6 +32,17 @@ Route::controller(RelationshipManagerController::class)->group(function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'client'], function () {
     Route::controller(ClientController::class)->group(function () {
         Route::get('/profile', 'show')->name('client.profile');
+        Route::get('/edit/profile/{id}', 'edit')->name('client.edit.profile');
+        Route::post('/update/profile/{id}', 'update')->name('client.update.profile');
+    });
+
+    Route::controller(RelationshipManagerController::class)->group(function () {
+        Route::get('/relationship-managers', 'showAllRelationshipManagers')->name('relationship-managers');
+        Route::get('/relationship-manager/profile/{id}', 'showManagerProfile')->name('view.relationship-manager.profile');
+    });
+
+    Route::controller(MailController::class)->group(function () {
+        Route::post('/email/relationship-manager/{id}', 'mailRelationshipManager')->name('email.relationship-manager');
     });
 });
 
